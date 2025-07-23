@@ -75,7 +75,13 @@ body{
     background-color: white;
 }
 /* New-Form Button */
-.add-btn{
+.add-btn,.edit-btn{
     background-color: #fe424d !important;
     border: none !important;
+}
+.new-form-head{
+    text-align: center;
+}
+.edit-form-head{
+    text-align: center;
 }

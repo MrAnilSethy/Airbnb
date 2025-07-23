@@ -1,9 +1,8 @@
 <% layout("/layouts/boilerplate")-%>
 <body>
 
-    
+     <h2 class="new-form-head" >Create a New Listings</h2>
     <div class="row ">
-        <h2 >Create a New Listings</h2>
         <div class="col-8 offset-2">
     <form method="POST" action="/listings">
         <div class="mb-3">
@@ -11,7 +10,7 @@
             <input placeholder="enter a catchy title" name="listing[title]" class="form-control"/>
         </div>
         <div class="mb-3">
-             <label for="desctiption">Description</label>
+             <label for="desctiption" class="form-label">Description</label>
              <textarea name="listing[description]" placeholder="enter description" class="form-control"></textarea>
         </div>
         <div class="mb-3">
@@ -33,9 +32,9 @@
            <label for="location" class="form-label">Location</label>
             <input placeholder="Odisha,Bhubaneswar" name="listing[location]" class="form-control"/>
         </div>
-        <br>
-        <button class=" add-btn btn btn-dark">Add</button>
-        <br>
+       <br>
+      
+        <button class="add-btn btn btn-dark">Add</button>
     
     </form>
     </div>
