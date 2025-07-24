@@ -13,7 +13,7 @@ app.set("views",path.join(__dirname,"/views"));
 app.use(express.static(path.join(__dirname,"/public")));
 main().then(()=>{
     console.log("Db connecetd");
-}).catch((err)=>{
+}).catch((err)=>{ 
     console.log(err);
 })
 async function main(){
@@ -29,7 +29,7 @@ app.get("/listings",async (req,res)=>{
 app.get("/listings/new",(req,res)=>{
     res.render("./listings/new.ejs");
 });
-app.get("/listings/:id",async(req,res)=>{
+app.get("/listings/:id",async(req,res,next)=>{
     let {id} = req.params;
     let showListing = await Listing.findById(id);
     res.render("./listings/show.ejs",{showListing});
@@ -55,6 +55,10 @@ app.delete("/listings/:id",async(req,res)=>{
     res.redirect("/listings");
    
 });
+app.use((err,req,res,next)=>{
+    let {status=500,message="some error occured"} = err;
+    res.status(status).send(message);
+})
 app.listen(8080,()=>{
     console.log("server listing port at 8080");
 })
