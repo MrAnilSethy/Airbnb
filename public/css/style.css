@@ -1,7 +1,7 @@
 body{
      font-family: "Plus Jakarta Sans", sans-serif !important;
-     display: flex;
-     flex-direction: column;
+     display: flex !important;
+     flex-direction: column !important;
      min-height: 100vh !important;
 }
 .container{
@@ -30,7 +30,7 @@ body{
 
 }
 .f-socials,.f-info-links,.f-info-brand{
-    width: 100%;
+    width: 100% !important;
     display: flex;
    justify-content: center;
     
@@ -84,4 +84,17 @@ body{
 }
 .edit-form-head{
     text-align: center;
+}
+
+/* Show Card */
+.show-img{
+    height: 46vh !important;
+    /* width: 50vw !important; */
+    object-fit: cover;
+}
+.btns{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+   
 }

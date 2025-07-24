@@ -1,17 +1,37 @@
 <% layout ("/layouts/boilerplate")-%>
 <body>
-    <h2>Show Detail</h2>
-   <ul>
-    <li><%=showListing.title%></li>
-     <li><%=showListing.description%></li>
-     <li><img src="<%=showListing.image.url%>" alt=""></li>
-       <li>&#8377;<%=showListing.price.toLocaleString()%></li>
-        <li><%=showListing.location%></li>
-         <li><%=showListing.country%></li>
-   </ul>
-  <form method="get" action="/listings/<%=showListing._id%>/edit">
-    <button>Edit</button>
-  </form> <br>
-   <form method="post" action="/listings/<%=showListing._id%>?_method=DELETE">
-    <button>Delete</button>
-  </form>
+  <div class="row">
+  <div class="col-8 offset-2">
+    <div class="col-8 offset-2">
+       <h3>Listing Details</h3>
+         <img src="<%=showListing.image.url%>" class="card-img-top show-img" alt="Listing-image"/>
+    <div class="card-body">
+     <p class="card-text"><b><%=showListing.title%></b>
+      <ul><li><%=showListing.description%></li></ul>
+      <ul><li>Price :&#8377;<%=showListing.price.toLocaleString()%></li></ul>
+      <ul><li>Location : <%=showListing.location%></li></ul>
+      <ul><li>Country :<%=showListing.country%></li></ul>
+    </p>
+     <div class="btns">
+     <div>
+      <form method="get" action="/listings/<%=showListing._id%>/edit">
+    <button class="btn btn-primary">Edit</button>
+   </form>
+   <br>
+     </div>
+     <div>
+<form method="post" action="/listings/<%=showListing._id%>/?_method=DELETE">
+    <button class="btn btn-danger">Delete</button>
+   </form>
+   <br>
+    </div>
+    <br>
+    </div>
+  </div>
+</div>
+
+     </div>
+     <br>
+     <br>
+</div>
+</body>
