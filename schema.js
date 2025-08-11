@@ -4,8 +4,8 @@ const Joi = require("joi");
       title:Joi.string().required(),
       description:Joi.string().required(),
       image: Joi.object({
-      url: Joi.string().uri().allow("", null)
-    }).required(),
+      url: Joi.string().uri().required(),
+    }),
       price:Joi.number().required().min(0),
       location:Joi.string().required(),
       country:Joi.string().required()
@@ -13,3 +13,10 @@ const Joi = require("joi");
     }).required(),
 });
 module.exports = listingSchema;
+// const reviewSchema = Joi.object({
+//   review:Joi.object({
+//     rating:Joi.number().required(),
+//     comment:Joi.string().required()
+//   })
+// }).required()
+// module.exports = reviewSchema;

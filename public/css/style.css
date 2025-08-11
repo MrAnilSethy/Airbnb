@@ -48,7 +48,7 @@ body{
     align-items: space-evenly;
 }
 /* Card */
-.card{
+.card-index{
     border: none !important;
     margin-bottom: 2rem;
 
