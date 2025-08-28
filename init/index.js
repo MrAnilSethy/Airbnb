@@ -11,7 +11,7 @@ async function main(){
 }
 async function DbInit(){
     await Listing.deleteMany({});
-    Listing.insertMany(initData.data);
+    await Listing.insertMany(initData.data);
     console.log("Data initilized");
 }
 DbInit();

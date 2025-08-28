@@ -5,10 +5,14 @@ const path = require("path");
 const methodOverride = require('method-override');
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
-const listingRouter = require("./routes/listing.js");
-const reviewRouter = require("./routes/review.js");
 const session = require("express-session");
 const flash = require("connect-flash");
+const User = require("./models/user.js");
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
+const listingRouter = require("./routes/listing.js");
+const reviewRouter = require("./routes/review.js");
+const userRouter = require("./routes/user.js");
 app.engine("ejs",ejsMate);
 app.use(methodOverride('_method'));
 app.use(express.urlencoded({extended:true}));
@@ -37,12 +41,22 @@ const sessionoption = {
 app.get("/",(req,res)=>{
     res.send("hi i am root");
 });
+//session middleware
 app.use(session(sessionoption));
 app.use(flash());
 app.use((req,res,next)=>{
     res.locals.successMsg = req.flash("success");
+    res.locals.errorMsg = req.flash("error");
     next();
-})
+});
+//passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+//User Router
+app.use("/",userRouter);
 //Listings Router
 app.use("/listings",listingRouter);
 //review Router
