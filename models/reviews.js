@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const { type } = require("../schema");
-const { required } = require("joi");
+// const { type } = require("../schema");
+// const { required } = require("joi");
 const {Schema} = mongoose;
 const reviewSchema = new Schema({
     rating:{

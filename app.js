@@ -44,17 +44,19 @@ app.get("/",(req,res)=>{
 //session middleware
 app.use(session(sessionoption));
 app.use(flash());
-app.use((req,res,next)=>{
-    res.locals.successMsg = req.flash("success");
-    res.locals.errorMsg = req.flash("error");
-    next();
-});
 //passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+//locals middleware always write below the passport
+app.use((req,res,next)=>{
+    res.locals.successMsg = req.flash("success");
+    res.locals.errorMsg = req.flash("error");
+    res.locals.currUser = req.user;
+    next();
+});
 //User Router
 app.use("/",userRouter);
 //Listings Router

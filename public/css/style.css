@@ -98,3 +98,7 @@ body{
     justify-content: space-evenly;
    
 }
+  /* for flash */
+  .flash-alert{
+    text-align: center;
+  }
